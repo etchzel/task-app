@@ -1,0 +1,18 @@
+li {
+    margin: 10px 0;
+}
+
+.list-content-container {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 150px 30px 30px auto;
+    gap: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+span {
+    align-self: center;
+}
