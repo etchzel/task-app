@@ -40,7 +40,6 @@ class App extends Component {
     });
 
     document.getElementById('taskInput').value = '';
-    console.log(this.state.tasks);
   };
 
   onDelete = (id) => {
@@ -84,7 +83,7 @@ class App extends Component {
   };
 
   render() {
-    const { task, tasks } = this.state;
+    const { tasks } = this.state;
     const formType = 1;
 
     return (
