@@ -1,18 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Form from './Form';
 import './Overview.css';
 
-const ListElement = ({ task, _handleDelete }) => {
-  const listContent = `${task.text} (Task No: ${task.taskNo})\t`;
+const ListElement = ({ task, _handleDelete, _handleEdit }) => {
+  const [edit, setEdit] = useState(task.text);
+
+  const listContent = `${edit} (Task No: ${task.taskNo})\t`;
 
   const submitEdit = (e) => {
     e.preventDefault();
+    _handleEdit(edit, task.id);
     document.getElementById(`${task.id}`).value='';
-    return;
+    document.getElementById(task.id).parentElement.classList.add('hidden');
   };
 
-  const editChanges = () => {
-    return;
+  const editChanges = (e) => {
+    setEdit(e.target.value);
   }
 
   const editButtonHandler = (id) => {
@@ -20,7 +23,7 @@ const ListElement = ({ task, _handleDelete }) => {
   }
 
   return (
-    <li task={task}>
+    <li>
       <div className="list-content-container">
         <p>{listContent}</p>
         <span 
@@ -42,7 +45,7 @@ const ListElement = ({ task, _handleDelete }) => {
 };
 
 const Overview = (props) => {
-  const { tasks, _handleDelete } = props;
+  const { tasks, _handleDelete, _handleEdit } = props;
 
   return (
     <ul>
@@ -52,6 +55,7 @@ const Overview = (props) => {
             key={task.id}
             task={task}
             _handleDelete={_handleDelete}
+            _handleEdit={_handleEdit}
           />
         );
       })}

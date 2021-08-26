@@ -40,6 +40,7 @@ class App extends Component {
     });
 
     document.getElementById('taskInput').value = '';
+    console.log(this.state.tasks);
   };
 
   onDelete = (id) => {
@@ -57,7 +58,30 @@ class App extends Component {
         taskNo: tasks.length,
       }
     });
-  }
+  };
+
+  onEdit = (edit, id) => {
+    const tasks = this.state.tasks.slice();
+    
+    this.setState({
+      tasks: tasks.map((task) => {
+        if (task.id === id) {
+          return ({
+            text: edit,
+            id: task.id,
+            taskNo: task.taskNo,
+          });
+        } else {
+          return task;
+        }
+      }),
+      task: {
+        text: this.state.task.text,
+        id: this.state.task.id,
+        taskNo: this.state.task.taskNo,
+      },
+    });
+  };
 
   render() {
     const { task, tasks } = this.state;
@@ -73,6 +97,7 @@ class App extends Component {
         <Overview 
           tasks={tasks}
           _handleDelete={this.onDelete}  
+          _handleEdit={this.onEdit}
         />
       </div>
     );

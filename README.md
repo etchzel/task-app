@@ -1,6 +1,12 @@
-# Getting Started with Create React App
+# Task App
+
+Part of the Handle Inputs and Render Lists learning objective from The Odin Project.
+
+Can add, edit and delete task. Not much styling done.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+[Demo](https://etchzel.github.io/task-app)
 
 ## Available Scripts
 
